@@ -1,5 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from .models import Photo
+from .models import Category, Photo
 
 
 def index(request):
@@ -8,6 +9,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
+@login_required
 def addPhoto(request):
     context = {}
     return render(request, "add.html", context)

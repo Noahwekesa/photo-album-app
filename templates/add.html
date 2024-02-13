@@ -1,1 +1,7 @@
-{% extends 'base.html' %} {% block content %} {% endblock content %}
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method='POST'>
+{{ photos|crispy }}
+</form>
+{% endblock content %}

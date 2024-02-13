@@ -21,6 +21,15 @@
       crossorigin="anonymous"
     ></script>
   </head>
+  <style>
+    body {
+      background-color: #d0ccc0;
+    }
+    .nav-link:hover,
+    .dropdown-item:hover {
+      text-decoration: underline;
+    }
+  </style>
   <body>
     <div class="container">
       {% include 'nav.html' %} {% block content %} {% endblock content %}
