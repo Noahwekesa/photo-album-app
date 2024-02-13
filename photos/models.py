@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+from django_extensions.db.fields import AutoSlugField
 
 
 class Category(models.Model):
@@ -20,6 +20,7 @@ class Photo(models.Model):
         null=True,
         blank=True,
     )
+    slug = AutoSlugField(populate_from="title")
     image = models.ImageField()
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
