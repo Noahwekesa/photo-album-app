@@ -14,8 +14,7 @@
        <div class="col-md-9 m-5">
                 <div class="row">
                   {% for photo in photos %}
-                  
-          {% include 'card.html' %}
+                  {% include 'card.html' %}
                       {% empty %}
                     <h3 class="text-center text-muted fst-italic">No photos...</h3>
                   {% endfor %}

@@ -5,8 +5,14 @@ from .models import Category, Photo
 
 def index(request):
     photos = Photo.objects.all().order_by("-created_at")
-    context = {}
+    context = {"photos": photos}
     return render(request, "index.html", context)
+
+
+@login_required
+def profile(request):
+    context = {}
+    return render(request, "profile", context)
 
 
 @login_required

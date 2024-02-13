@@ -1,11 +1,12 @@
 <div class="col-md-4">
   <div class="card my-2">
-    <img src="..." class="card-img-top" alt="..." />
+    <img
+      src="{{ photo.image.url }}"
+      class="card-img-top"
+      alt="{{photo.title}}"
+    />
     <div class="card-body">
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
+      <p class="card-text">{{photo.description}}</p>
     </div>
   </div>
 </div>

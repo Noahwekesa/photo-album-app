@@ -21,7 +21,7 @@ class Photo(models.Model):
         blank=True,
     )
     slug = AutoSlugField(populate_from="title")
-    image = models.ImageField()
+    image = models.ImageField(upload_to="uploads/", blank=True, null=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

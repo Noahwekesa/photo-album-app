@@ -51,6 +51,7 @@
           <a class="nav-link" href="{% url 'add-photo' %}">Add Photo</a>
         </li>
       </ul>
+      <div class="text-center">{{user.username}}</div>
       <div class="d-flex" role="search">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
@@ -75,10 +76,15 @@
               </svg>
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
+              {% if user.is_authenticated %}
+
+              <li>
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+              {% else %}
               <li><a class="dropdown-item" href="#">Something else here</a></li>
+              {% endif %}
             </ul>
           </li>
         </ul>
