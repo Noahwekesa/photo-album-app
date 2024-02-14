@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     # my apps
     "photos",
     # third party app
-    "storages",
+    "cloudinary_storage",
+    "cloudinary",
 ]
 
 MIDDLEWARE = [
@@ -144,6 +145,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "profile"
 LOGIN_URL = "login"
 
-DROPBOX_ROOT_PATH = "media"
-DROPBOX_OAUTH2_TOKEN = env("DROPBOX_OAUTH2_TOKEN")
-DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropboxStorage"
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env("CLOUD_NAME"),
+    "CAPI_KEY": env("CAPI_KEY"),
+    "API_SECRET": env("API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.RawMediaCloudinaryStorage"
