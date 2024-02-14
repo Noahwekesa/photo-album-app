@@ -81,9 +81,15 @@
               <li>
                 <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
               </li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </li>
               {% else %}
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li>
+                <a class="dropdown-item" href="{% url 'register' %}"
+                  >Create an account</a
+                >
+              </li>
               {% endif %}
             </ul>
           </li>
