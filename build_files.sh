@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# updated pip
+pip install --upgrade pip
 # install requirements
 python3 -m pip install -r requirements.txt
 
