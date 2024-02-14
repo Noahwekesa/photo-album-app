@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # my apps
     "photos",
+    # third party app
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -141,3 +143,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "profile"
 LOGIN_URL = "login"
+
+DROPBOX_ROOT_PATH = "media"
+DROPBOX_OAUTH2_TOKEN = "sl.BvkL8ly56MbYVt8Qs_0F-Ijho-wcuQGLLtmDZOVX_XxVSxgUDOqFgiR5xLsDbqJZzm-f8XkqcRX5qJURo49_xguF_H-jD05RrdwHq2TM-OIYSKKucI8PtubM20KazdHM-OBdp8JnOl85"
+
+DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropboxStorage"
