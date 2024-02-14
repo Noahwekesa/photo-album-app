@@ -6,7 +6,7 @@ from django_extensions.db.fields import AutoSlugField
 
 class Category(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    name = models.CharField(max_length=150, null=False, blank=False)
+    name = models.CharField(max_length=150, unique=True, null=False, blank=False)
 
     def __str__(self):
         return f"{self.name}"
