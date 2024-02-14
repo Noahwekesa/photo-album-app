@@ -147,9 +147,9 @@ LOGIN_URL = "login"
 
 
 CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": env("CLOUD_NAME"),
-    "CAPI_KEY": env("CAPI_KEY"),
-    "API_SECRET": env("API_SECRET"),
+    "CLOUD_NAME": os.getenv("CLOUD_NAME"),
+    "CAPI_KEY": os.getenv("CAPI_KEY"),
+    "API_SECRET": os.getenv("API_SECRET"),
 }
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.RawMediaCloudinaryStorage"
