@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block content %}
 <div class="text-center container">
   {% if user.is_authenticated %}
@@ -8,7 +9,8 @@
 </div>
        <form method="POST">
             {% csrf_token %}
-            {{ form }}
+{% render_field form.username class="form-control" %}
+{% render_field form.password class="form-control" %}
    <button type="submit" class="btn btn-secondary">Login</button>
         </form>
       </div>

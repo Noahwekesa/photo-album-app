@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # third party app
     "cloudinary_storage",
     "cloudinary",
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -142,7 +143,7 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-LOGIN_REDIRECT_URL = "profile"
+LOGIN_REDIRECT_URL = "index"
 LOGIN_URL = "login"
 
 
