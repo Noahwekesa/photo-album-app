@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # my apps
     "photos",
+    "accounts",
     # third party app
     "cloudinary_storage",
     "cloudinary",
