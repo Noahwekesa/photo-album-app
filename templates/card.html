@@ -1,10 +1,12 @@
 <div class="col-md-4">
   <div class="card my-2">
-    <img
-      src="{{ photo.image.url }}"
-      class="card-img-top"
-      alt="{{photo.title}}"
-    />
+    <a href="{{ objett.get_absolute_url }}">
+      <img
+        src="{{ photo.image.url }}"
+        class="card-img-top"
+        alt="{{photo.title}}"
+      />
+    </a>
     <div class="card-body">
       <p class="card-text">{{photo.description}}</p>
     </div>

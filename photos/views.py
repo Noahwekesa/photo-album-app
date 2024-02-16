@@ -1,9 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .forms import AddPhotoForm, SignUpForm
-from django.contrib import messages
+from django.shortcuts import Http404, render
 from .models import Photo
-from django.contrib.auth import authenticate, login, logout
 
 
 def index(request):
@@ -25,32 +22,15 @@ def addPhoto(request):
 
 
 def viewPhoto(request, slug):
-    context = {}
+    photo_obj = None
+    if slug is not None:
+        try:
+            photo_obj = Photo.objects.get(slug=slug)
+        except Photo.DoesNotExist:
+            raise Http404
+        except Photo.MultipleObjectsReturned:
+            photo_obj = Photo.objects.filter(slug=slug).first()
+        except:
+            raise Http404
+    context = {"object": photo_obj}
     return render(request, "view_photo.html", context)
-
-
-# register users
-def register_user(request):
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # Authenticate and login
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password1"]
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            messages.success(request, "Registration successfully")
-            return redirect("login")
-    else:
-        form = SignUpForm()
-        return render(request, "accounts/register.html", {"form": form})
-
-    return render(request, "accounts/register.html", {"form": form})
-
-
-# logout users
-def logout_user(request):
-    logout(request)
-    messages.info(request, "You have been logged out successfully")
-    return redirect("login")
