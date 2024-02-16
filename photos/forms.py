@@ -4,6 +4,15 @@ from .models import Photo, Category
 from django.contrib.auth.forms import UserCreationForm
 
 
+class AddPhotoForm(forms.Form):
+    class Meta:
+        models = Photo
+        fields = (
+            "title",
+            "description",
+        )
+
+
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(
         label="",
@@ -11,27 +20,11 @@ class SignUpForm(UserCreationForm):
             attrs={"class": "form-control", "placeholder": "Email Address"}
         ),
     )
-    first_name = forms.CharField(
-        label="",
-        max_length=100,
-        widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "First Name"}
-        ),
-    )
-    last_name = forms.CharField(
-        label="",
-        max_length=100,
-        widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Last Name"}
-        ),
-    )
 
     class Meta:
         model = User
         fields = (
             "username",
-            "first_name",
-            "last_name",
             "email",
             "password1",
             "password2",

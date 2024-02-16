@@ -1,9 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import Category, Photo
-from .forms import SignUpForm
+from .forms import AddPhotoForm, SignUpForm
 from django.contrib import messages
-
+from .models import Photo
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -25,7 +24,7 @@ def addPhoto(request):
     return render(request, "add.html", context)
 
 
-def viewPhoto(request, pk):
+def viewPhoto(request, slug):
     context = {}
     return render(request, "view_photo.html", context)
 
@@ -41,7 +40,7 @@ def register_user(request):
             password = form.cleaned_data["password1"]
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, "You Have Successfully Registered! Welcome!")
+            messages.success(request, "Registration successfully")
             return redirect("login")
     else:
         form = SignUpForm()
