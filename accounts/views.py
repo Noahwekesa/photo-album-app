@@ -1,4 +1,5 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
@@ -22,6 +23,12 @@ def register_user(request):
         return render(request, "accounts/register.html", {"form": form})
 
     return render(request, "accounts/register.html", {"form": form})
+
+
+@login_required
+def profile(request):
+    context = {}
+    return render(request, "accounts/profile.html", context)
 
 
 def login_view(request):
