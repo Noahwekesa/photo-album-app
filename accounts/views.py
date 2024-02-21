@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
 
-
+from django.contrib import messages
 # register users
 def register_user(request):
     if request.method == "POST":
