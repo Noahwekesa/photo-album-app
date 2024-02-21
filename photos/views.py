@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import Http404, render
+from django.shortcuts import Http404, get_object_or_404, render
 from .models import Photo
 
 
@@ -16,15 +16,6 @@ def addPhoto(request):
 
 
 def viewPhoto(request, slug):
-    photo_obj = None
-    if slug is not None:
-        try:
-            photo_obj = Photo.objects.get(slug=slug)
-        except Photo.DoesNotExist:
-            raise Http404
-        except Photo.MultipleObjectsReturned:
-            photo_obj = Photo.objects.filter(slug=slug).first()
-        except:
-            raise Http404
-    context = {"object": photo_obj}
-    return render(request, "view_photo.html", context)
+    photo = get_object_or_404(Photo, slug=slug)
+    context = {"photo": photo}
+    return render(request, "photo.html", context)
