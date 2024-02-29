@@ -5,6 +5,6 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("addphoto/", views.addPhoto, name="add-photo"),
-    path("<slug:slug>/", views.viewPhoto, name="view-photo"),
+    path("addphoto/", views.add_photo, name="add_photo"),
+    path("photo/<slug:slug>/", views.view_photo, name="view_photo"),
 ]

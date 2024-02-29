@@ -48,7 +48,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'add-photo' %}">Add Photo</a>
+          <a class="nav-link" href="{% url 'add_photo' %}">Add Photo</a>
         </li>
       </ul>
       <div class="text-center">{{user.username}}</div>
@@ -82,16 +82,18 @@
                 <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                <a class="dropdown-item" href="{% url 'account_logout' %}"
+                  >Logout</a
+                >
               </li>
               {% else %}
               <li>
-                <a class="dropdown-item" href="{% url 'login' %}"> Login</a>
+                <a class="dropdown-item" href="{% url 'account_login' %}">
+                  Login</a
+                >
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'register' %}"
-                  >Create an account</a
-                >
+                <a class="dropdown-item" href="">Create an account</a>
               </li>
               {% endif %}
             </ul>

@@ -2,10 +2,11 @@ from django import forms
 from .models import Photo
 
 
-class AddPhotoForm(forms.Form):
+class AddPhotoForm(forms.ModelForm):
     class Meta:
-        models = Photo
-        fields = (
+        model = Photo
+        fields = [
             "title",
             "description",
-        )
+            "image",
+        ]
