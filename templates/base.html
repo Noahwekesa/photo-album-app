@@ -30,10 +30,22 @@
     .dropdown-item:hover {
       text-decoration: underline;
     }
+    .container {
+      max-width: 960px;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 60px; /* Set the fixed height of the footer here */
+      line-height: 60px; /* Vertically center the text there */
+      background-color: #f5f5f5;
+    }
   </style>
   <body>
-    <div class="container">
-      {% include 'nav.html' %} {% block content %} {% endblock content %}
-    </div>
+    {% include 'nav.html' %}
+
+    <div class="container">{% block content %} {% endblock content %}</div>
   </body>
 </html>
