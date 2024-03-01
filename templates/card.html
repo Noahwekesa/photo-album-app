@@ -2,14 +2,36 @@
   <div class="card my-2">
     <a href="{{ object.get_absolute_url }}">
       <img
-        src="{{ photo.image.url }}"
+        src="{{ category.image.url }}"
         class="card-img-top"
-        alt="{{photo.title}}"
+        alt="{{category.title}}"
       />
     </a>
     <div class="card-body">
-      <h4>{{photo.title}}</h4>
+      <h4>{{category.title}}</h4>
       <p class="card-text">{{photo.description}}</p>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          {% if category.user == request.user %}
+          <a href="" type="button" class="btn btn-sm btn-danger">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row justify-content-start align-items-center">
+        <div class="col-1">
+          <img
+            <!-- src="{{category.user.image.url}}" -->
+            class="rounded-circle"
+            height="30"
+            width="30"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="col-4">
+          <p class="card-text">{{photo.user.username}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

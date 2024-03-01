@@ -34,6 +34,12 @@ class Photo(models.Model):
         primary_key=True,
         editable=False,
     )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
     title = models.CharField(
         max_length=100,
         null=True,
@@ -47,9 +53,8 @@ class Photo(models.Model):
     )
     slug = AutoSlugField(populate_from="title")
     image = models.ImageField(
-        upload_to="uploads/",
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
     )
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
