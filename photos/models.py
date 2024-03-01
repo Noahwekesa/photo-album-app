@@ -9,56 +9,27 @@ User = settings.AUTH_USER_MODEL
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
     user = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-    name = models.CharField(
-        max_length=150,
-        unique=True,
-        null=False,
-        blank=False,
-    )
+        User, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=100, null=False, blank=False)
 
     def __str__(self):
-        return f"{self.name}"
+        return self.name
 
 
 class Photo(models.Model):
-    id = models.CharField(
-        max_length=100,
-        default=uuid.uuid4,
-        unique=True,
-        primary_key=True,
-        editable=False,
-    )
-    user = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-    title = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True,
-    )
+    class Meta:
+        verbose_name = 'Photo'
+        verbose_name_plural = 'Photos'
+
     category = models.ForeignKey(
-        Category,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-    slug = AutoSlugField(populate_from="title")
-    image = models.ImageField(
-        blank=False,
-        null=False,
-    )
+        Category, on_delete=models.SET_NULL, null=True, blank=True)
+    image = models.ImageField(null=False, blank=False)
     description = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.title}"
+        return self.description
