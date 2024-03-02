@@ -11,6 +11,15 @@
         <p class="small text-muted fst-italic">share your best memes / shot / moments</p>
 
         </div>
+
+ {% for category in categories %}
+                        <li class=" list-group-item">
+                            <a href="{% url 'gallery' %}?category={{category.name}}">
+                                {{category.name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+
        <div class="col-md-9 m-5">
                 <div class="row">
                         {% for photo in photos %}
