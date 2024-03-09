@@ -8,6 +8,7 @@ cryptography==42.0.2
 defusedxml==0.7.1
 Django==4.2.9
 django-allauth==0.61.1
+django-browser-reload==1.12.1
 django-cloudinary-storage==0.3.0
 django-crispy-forms==2.1
 django-environ==0.11.2
