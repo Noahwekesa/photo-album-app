@@ -1,8 +1,15 @@
 from django.db import models
+from django.conf import settings
 from django_extensions.db.fields import AutoSlugField
+
+User = settings.AUTH_USER_MODEL
 
 
 class Post(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
     title = models.CharField(max_length=150)
     slug = AutoSlugField(populate_from="title")
     image = models.ImageField(

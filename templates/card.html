@@ -1,6 +1,6 @@
 <div class="col-md-4">
   <div class="card my-2">
-    <a href="">
+    <a href="{% url 'detail' post.slug %}">
       <img
         src="{{post.image.url}}"
         class="card-img-top"
@@ -10,25 +10,15 @@
     <div class="card-body">
       <p class="card-text">{{post.description}}</p>
 
-      {% comment %}
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
-          {% if category.user == request.user %}
+          {% if post.user == request.user %}
           <a href="" type="button" class="btn btn-sm btn-danger">Delete</a>
           {% endif %}
         </div>
       </div>
-      {% endcomment %}
 
       <div class="row justify-content-start align-items-center">
-        <div class="col-1">
-          <!-- <img -->
-          <!--   class="rounded-circle" -->
-          <!--   height="30" -->
-          <!--   width="30" -->
-          <!--   style="object-fit: cover" -->
-          <!-- /> -->
-        </div>
         <div class="col">
           <p class="card-text">
             <span class="text-muted">Posted by: </span>{{user.username}}
